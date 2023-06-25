@@ -32,9 +32,10 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
 import profileImage from "assets/profile.jpeg";
+import userEvent from "@testing-library/user-event";
 
 
-function Sidebar({drawerWidth,isSidebarOpen,setIsSidebarOpen,isNonMobile,}) 
+function Sidebar({drawerWidth,isSidebarOpen,setIsSidebarOpen,isNonMobile,user}) 
 {
 const { pathname } = useLocation();
   const [active, setActive] = useState("");
@@ -138,11 +139,11 @@ const { pathname } = useLocation();
                 )}
               </FlexBetween>
             </Box>
-            <List>
+            <List  >
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
-                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
+                    <Typography key={text} sx={{ m: "0.75rem 0 1rem 3rem" }}>
                       {text}
                     </Typography>
                   );
@@ -191,7 +192,7 @@ const { pathname } = useLocation();
 
           <Box position="absolute" bottom="2rem">
             <Divider />
-            <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
+            <FlexBetween textTransform="none" gap="1rem" m="1.5rem 1rem 0 2rem">
               <Box
                 component="img"
                 alt="profile"
@@ -201,6 +202,15 @@ const { pathname } = useLocation();
                 borderRadius="50%"
                 sx={{ objectFit: "cover" }}
               />
+              <Box textAlign="left">
+                <Typography fontWeight="bold" fontSize="0.7 rem" sx={{color:theme.palette.secondary[100]}}>
+                  {user.name}
+                </Typography>
+                <Typography  fontSize="0.8 rem" sx={{color:theme.palette.secondary[200]}}>
+                  {user.occupation}
+                </Typography>
+
+              </Box>
               
               <SettingsOutlined
                 sx={{
