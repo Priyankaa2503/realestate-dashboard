@@ -11,7 +11,9 @@ import managementRoutes from './routes/management.js'
 import salesRoutes from './routes/sales.js'
 import { getUser } from "./controllers/general.js";
 import User from "./models/User.js";
-import {dataUser} from './data/index.js'
+import Product from "./models/Product.js"
+import ProductStat from "./models/ProductStat.js"
+import {dataUser,dataProduct,dataProductStat} from './data/index.js'
 
 /* CONFIGURATION */
 dotenv.config();
@@ -43,7 +45,7 @@ mongoose
     //  User.insertMany(dataUser);
     // AffiliateStat.insertMany(dataAffiliateStat);
     // OverallStat.insertMany(dataOverallStat);
-    // Product.insertMany(dataProduct);
+    //  Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
   })
